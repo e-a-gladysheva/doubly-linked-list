@@ -12,20 +12,22 @@ class LinkedList {
             var newNode = new Node(data);
             this._head = newNode;
             this._tail = newNode;
-            this.length++;
         }
         else {
-            var newNode = new Node(data);
+            var newNode = new Node(data, this._tail);
             this._tail.next = newNode;
-            newNode.prev = this._tail;
             this._tail = newNode;
-            this.length++;
         }
+        this.length++;  
     }
 
-    head() { return this._head.data;}
+    head() { 
+        return this._head.data; 
+    }
 
-    tail() { return this._tail.data;}
+    tail() { 
+        return this._tail.data;
+    }
 
     at(index) {}
 
