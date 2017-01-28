@@ -22,11 +22,11 @@ class LinkedList {
     }
 
     head() { 
-        return this._head.data; 
+        return this._head == null ? null : this._head.data; 
     }
 
     tail() { 
-        return this._tail.data;
+        return this._tail == null ? null : this._tail.data;
     }
 
     at(index) {
@@ -46,7 +46,11 @@ class LinkedList {
         return this.length == 0 ? true : false;
     }
 
-    clear() {}
+    clear() {
+        this._tail = null;
+        this._head = null;
+        this.length = 0;
+    }
 
     deleteAt(index) {}
 
