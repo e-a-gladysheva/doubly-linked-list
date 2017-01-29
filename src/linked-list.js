@@ -33,18 +33,23 @@ class LinkedList {
         var current = this._head;
         var position = 0;
 
-        if (index < this.length) {
-    
         while (position < index) {
             current = current.next;
             position++;
         }
         return current.data;
     }
-      return "Error";
-    }
 
-    insertAt(index, data) {}
+    insertAt(index, data) {
+       /* var current = this._head;
+        var position = 0;
+    
+        while (position < index) {
+            current = current.next;
+            position++;
+        }
+        return current.data;*/
+    }
 
     isEmpty() {
         return this.length == 0 ? true : false;
@@ -59,8 +64,6 @@ class LinkedList {
     deleteAt(index) {
         var current = this._head;
         var position = 0;
-
-        if (index < this.length) {
     
         while (position < index) {
             current = current.next;
@@ -68,8 +71,6 @@ class LinkedList {
         }
         current.prev.next = current.next;
         current.next.prev = current.prev;
-    }
-      return "Error";
     }
     
 
@@ -79,11 +80,16 @@ class LinkedList {
         var current = this._head;
         var position = 0;
     
-        while (current.data != data) {
+        while (position < this.length) {
+
+            if (current.data == data){
+                return position;
+            }
             current = current.next;
             position++;
         }
-        return position;
+        
+        return -1;
     }
     
 }
