@@ -32,12 +32,16 @@ class LinkedList {
     at(index) {
         var current = this._head;
         var position = 0;
+
+        if (index < this.length) {
     
         while (position < index) {
             current = current.next;
             position++;
         }
         return current.data;
+    }
+      return "Error";
     }
 
     insertAt(index, data) {}
@@ -52,7 +56,22 @@ class LinkedList {
         this.length = 0;
     }
 
-    deleteAt(index) {}
+    deleteAt(index) {
+        var current = this._head;
+        var position = 0;
+
+        if (index < this.length) {
+    
+        while (position < index) {
+            current = current.next;
+            position++;
+        }
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+    }
+      return "Error";
+    }
+    
 
     reverse() {}
 
