@@ -70,7 +70,15 @@ class LinkedList {
     }
     
 
-    reverse() {}
+    reverse() {
+        for (var i = 0; i < this.length/2; i++) {
+            var first = this.move(i);
+            var last = this.move(this.length-1-i);
+            var tmp = first.data;
+            first.data = last.data;
+            last.data = tmp;
+        }
+    }
 
     indexOf(data) {
         var current = this._head;
@@ -88,6 +96,7 @@ class LinkedList {
         return -1;
     }
     
+  chaining() {}
 }
 
 module.exports = LinkedList;
