@@ -19,6 +19,8 @@ class LinkedList {
             this._tail = newNode;
         }
         this.length++;  
+
+        return this;
     }
 
     head() { 
@@ -46,11 +48,16 @@ class LinkedList {
     }
 
     insertAt(index, data) {
-        var current = this.move(index);
-        var newNode = new Node(data, current.prev, current);
-        current.prev = newNode;
-        current.prev.prev.next = newNode;
-
+        if (this.length == 0) {
+            this.append(data);
+        }
+        else {
+            var current = this.move(index);
+            var newNode = new Node(data, current.prev, current);
+            current.prev = newNode;
+            current.prev.prev.next = newNode;
+        }
+        return this;
     }
 
     isEmpty() {
@@ -61,12 +68,19 @@ class LinkedList {
         this._tail = null;
         this._head = null;
         this.length = 0;
+        return this;
     }
 
     deleteAt(index) {
-        var current = this.move(index);
-        current.prev.next = current.next;
-        current.next.prev = current.prev;
+        if(this.length == 1){
+            this.clear();
+        }
+        else {
+            var current = this.move(index);
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
+        return this;
     }
     
 
@@ -78,6 +92,7 @@ class LinkedList {
             first.data = last.data;
             last.data = tmp;
         }
+        return this;
     }
 
     indexOf(data) {
@@ -95,8 +110,6 @@ class LinkedList {
         
         return -1;
     }
-    
-  chaining() {}
 }
 
 module.exports = LinkedList;
