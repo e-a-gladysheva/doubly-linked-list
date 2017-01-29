@@ -29,7 +29,7 @@ class LinkedList {
         return this._tail == null ? null : this._tail.data;
     }
 
-    at(index) {
+    move(index) {
         var current = this._head;
         var position = 0;
 
@@ -37,17 +37,16 @@ class LinkedList {
             current = current.next;
             position++;
         }
+        return current;
+    }
+
+    at(index) {
+        var current = this.move(index);
         return current.data;
     }
 
     insertAt(index, data) {
-        var current = this._head;
-        var position = 0;
-
-        while (position < index) {
-            current = current.next;
-            position++;
-        }
+        var current = this.move(index);
         var newNode = new Node(data, current.prev, current);
         current.prev = newNode;
         current.prev.prev.next = newNode;
@@ -65,13 +64,7 @@ class LinkedList {
     }
 
     deleteAt(index) {
-        var current = this._head;
-        var position = 0;
-    
-        while (position < index) {
-            current = current.next;
-            position++;
-        }
+        var current = this.move(index);
         current.prev.next = current.next;
         current.next.prev = current.prev;
     }
