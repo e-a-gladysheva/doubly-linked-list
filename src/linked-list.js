@@ -41,14 +41,17 @@ class LinkedList {
     }
 
     insertAt(index, data) {
-       /* var current = this._head;
+        var current = this._head;
         var position = 0;
-    
+
         while (position < index) {
             current = current.next;
             position++;
         }
-        return current.data;*/
+        var newNode = new Node(data, current.prev, current);
+        current.prev = newNode;
+        current.prev.prev.next = newNode;
+
     }
 
     isEmpty() {
